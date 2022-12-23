@@ -1,0 +1,8 @@
+version: '3'
+services:
+  node:
+    image: node:latest
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: npm run watch
