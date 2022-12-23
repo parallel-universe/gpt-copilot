@@ -12,8 +12,56 @@
 			{
 				"command": "gpt-copilot.test",
 				"title": "GPT Copilot"
+			},
+            {
+				"command": "gpt-copilot.explain_selection",
+				"title": "GPT - Explain Selection"
+			},
+            {
+				"command": "gpt-copilot.ask_about_selection",
+				"title": "GPT - Ask About Selection"
+			},
+            {
+				"command": "gpt-copilot.explain_file",
+				"title": "GPT - Explain File"
+			},
+            {
+				"command": "gpt-copilot.ask_about_file",
+				"title": "GPT - Ask About File"
+			},
+            {
+				"command": "gpt-copilot.ask_anything",
+				"title": "GPT - Ask Anything"
 			}
-		]
+		],
+        "menus": {
+            "editor/context": [
+                {
+                    "when": "editorHasSelection",
+                    "command": "gpt-copilot.explain_selection",
+                    "group": "z_commands"
+                },
+                {
+                    "when": "editorHasSelection",
+                    "command": "gpt-copilot.ask_about_selection",
+                    "group": "z_commands"
+                },
+                {
+                    "when": "!editorHasSelection",
+                    "command": "gpt-copilot.explain_file",
+                    "group": "z_commands"
+                },
+                {
+                    "when": "!editorHasSelection",
+                    "command": "gpt-copilot.ask_about_file",
+                    "group": "z_commands"
+                },
+                {
+                    "command": "gpt-copilot.ask_anything",
+                    "group": "z_commands"
+                }
+            ]
+        }
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
