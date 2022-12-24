@@ -32,6 +32,10 @@
             {
                 "command": "gpt-copilot.ask_anything",
                 "title": "GPT - Ask Anything"
+            },
+            {
+                "command": "gpt-copilot.setup",
+                "title": "GPT - Setup"
             }
         ],
         "menus": {

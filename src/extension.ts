@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { getApiKeyFromUser, getApiKeyFromStorage } from './auth';
 
 export async function activate(context: vscode.ExtensionContext) {
   const { subscriptions } = context;
@@ -7,8 +8,22 @@ export async function activate(context: vscode.ExtensionContext) {
   subscriptions.push(
     vscode.commands.registerCommand("gpt-copilot.test", () => {
         const channel = vscode.window.createOutputChannel("GPT Copilot");
-        channel.appendLine("Hello World!!!!");
-        channel.show();
+        const apiKey = getApiKeyFromStorage(context);
+        apiKey.then((key) => {
+          if (key === undefined) {
+            channel.appendLine("No API Key found");
+            channel.appendLine("Please run the command 'GPT Copilot: Setup' to set your API Key");
+          } else {
+            channel.appendLine(key);
+          }
+          channel.show();
+        });
+    })
+  );
+
+  subscriptions.push(
+    vscode.commands.registerCommand("gpt-copilot.setup", () => {
+        getApiKeyFromUser(context);
     })
   );
 
