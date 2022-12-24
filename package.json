@@ -59,7 +59,12 @@
                 {
                     "command": "gpt-copilot.ask_anything",
                     "group": "z_commands"
+                },
+                {
+                    "command": "gpt-copilot.test",
+                    "group": "z_commands"
                 }
+                
             ]
         }
     },
