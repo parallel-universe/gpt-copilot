@@ -4,6 +4,12 @@ npm_install:
 npm_compile:
 	docker-compose run node bash -c "npm compile"
 
+ts_standard:
+	docker-compose run node bash -c "npx ts-standard"
+
+ts_standard_fix:
+	docker-compose run node bash -c "npx ts-standard --fix"
+
 up:
 	docker-compose up -d
 
