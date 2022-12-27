@@ -1,10 +1,10 @@
 import * as vscode from 'vscode'
 import { setupCommand } from './commands/setup'
-import { askAboutSelectionCommand } from './commands/askAboutSelection'
+import { explainSelectionCommand } from './commands/explainSelection'
 import { testCommand } from './commands/test'
 
 export const registerCommands = (context: vscode.ExtensionContext, subscriptions: vscode.Disposable[]): void => {
   subscriptions.push(setupCommand(context))
-  subscriptions.push(askAboutSelectionCommand(context))
+  subscriptions.push(explainSelectionCommand(context))
   subscriptions.push(testCommand(context))
 }

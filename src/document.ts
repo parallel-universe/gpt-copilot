@@ -11,3 +11,15 @@ export const getHighlightedText = (): string => {
   }
   return ''
 }
+
+export const getFileExtension = (): string => {
+  const editor = vscode.window.activeTextEditor
+  if (editor != null) {
+    const fileName = editor.document.fileName
+    const extension = fileName.split('.').pop()
+    if (extension != null) {
+      return extension
+    }
+  }
+  return ''
+}
