@@ -69,6 +69,35 @@
                     "group": "z_commands"
                 }
             ]
+        },
+        "configuration": {
+            "title": "gpt-copilot",
+            "properties": {
+                "gpt-copilot.model": {
+                    "type": "string",
+                    "default": "text-davinci-003",
+                    "markdownDescription": "[Model](https://beta.openai.com/docs/models)"
+                },
+                "gpt-copilot.maxTokens": {
+                    "type": "number",
+                    "default": 1500,
+                    "minimum": 1,
+                    "maximum": 4000,
+                    "markdownDescription": "Max [tokens](https://beta.openai.com/docs/introduction/overview) (max 4000)"
+                },
+                "gpt-copilot.temperature": {
+                    "type": "number",
+                    "default": 0.1,
+                    "minimum": 0,
+                    "maximum": 1,
+                    "markdownDescription": "[Temperature](https://beta.openai.com/docs/api-reference/completions/create#completions/create-temperature). Between 0 and 1"
+                },
+                "gpt-copilot.org": {
+                    "type": "string",
+                    "default": null,
+                    "markdownDescription": "[Organization](https://beta.openai.com/account/org-settings)"
+                }
+            }
         }
     },
     "scripts": {
