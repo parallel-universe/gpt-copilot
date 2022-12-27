@@ -21,7 +21,7 @@ const getApiKeyFromUser = async (context: vscode.ExtensionContext): Promise<void
     }
   }).then((key) => {
     if (key !== undefined) {
-      void setApiKey(context, key)
+      void setApiKey(context.secrets, key)
     }
   })
 }
