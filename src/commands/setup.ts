@@ -1,5 +1,5 @@
 import * as vscode from 'vscode'
-import { setApiKey } from '../auth'
+import { apiKey } from '../apiKey'
 
 export const setupCommand = (context: vscode.ExtensionContext): vscode.Disposable => {
   return vscode.commands.registerCommand('gpt-copilot.setup', () => {
@@ -21,7 +21,7 @@ const getApiKeyFromUser = async (context: vscode.ExtensionContext): Promise<void
     }
   }).then((key) => {
     if (key !== undefined) {
-      void setApiKey(context.secrets, key)
+      void apiKey.set(context.secrets, key)
     }
   })
 }

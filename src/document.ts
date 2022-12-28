@@ -12,6 +12,15 @@ export const getHighlightedText = (): string => {
   return ''
 }
 
+export const getCurrentEditorContents = (): string => {
+  const editor = vscode.window.activeTextEditor
+  if (editor != null) {
+    const document = editor.document
+    return document.getText()
+  }
+  return ''
+}
+
 export const getFileExtension = (): string => {
   const editor = vscode.window.activeTextEditor
   if (editor != null) {

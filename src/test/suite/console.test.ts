@@ -1,6 +1,6 @@
 
 import * as vscode from 'vscode'
-import { writeToConsole } from '../../console'
+import { writeToConsole } from '../../io'
 import { instance, mock, verify } from 'ts-mockito'
 
 suite('Console test suite', () => {
