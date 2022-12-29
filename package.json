@@ -1,5 +1,23 @@
 {
     "name": "gpt-copilot",
+    "displayName": "GPT CoPilot",
+    "description": "GPT-3 powered code explanation and documentation assistant",
+    "publisher": "parallel-universe",
+    "pricing": "Free",
+    "categories": [
+        "Machine Learning",
+        "Testing",
+        "Debuggers"
+    ],
+    "keywords": [
+        "GPT-3",
+        "GPT3",
+        "GPT",
+        "AI",
+        "OpenAI",
+        "ML",
+        "Machine Learning"
+    ],
     "version": "0.0.1",
     "private": true,
     "engines": {
@@ -9,7 +27,7 @@
         "type": "git",
         "url": "https://github.com/parallel-universe/gpt-copilot"
     },
-    "icon": "images/spellIcon.png",
+    "icon": "images/logo.png",
     "activationEvents": [],
     "main": "./out/extension.js",
     "contributes": {
