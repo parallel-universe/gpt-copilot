@@ -5,6 +5,7 @@
     "engines": {
         "vscode": "^1.74.0"
     },
+    "icon": "images/spellIcon.png",
     "activationEvents": [],
     "main": "./out/extension.js",
     "contributes": {
