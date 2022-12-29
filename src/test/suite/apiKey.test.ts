@@ -3,7 +3,7 @@ import * as assert from 'assert'
 import { instance, mock, verify, when } from 'ts-mockito'
 import { apiKey } from '../../apiKey'
 
-suite('Auth test suite', () => {
+suite('API Key test suite', () => {
   let secrets: vscode.SecretStorage
   let mockedSecrets: vscode.SecretStorage
 

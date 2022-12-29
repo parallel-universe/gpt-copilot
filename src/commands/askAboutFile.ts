@@ -1,6 +1,6 @@
 import * as vscode from 'vscode'
 import { writeToConsole, outputChannel, getUserInput } from '../io'
-import { makeRequest } from '../openai'
+import { makeRequestWithLoadingIndicator } from '../openai'
 import { getCurrentEditorContents } from '../document'
 
 export const askAboutFileCommand = (context: vscode.ExtensionContext): vscode.Disposable => {
@@ -9,7 +9,7 @@ export const askAboutFileCommand = (context: vscode.ExtensionContext): vscode.Di
     if (fileContents.length > 0) {
       const userQuestion = await getUserInput('Enter your question', 'What does this code do?', 'Invalid question')
       const prompt = `${userQuestion}: ${fileContents}`
-      const response = await makeRequest(prompt, context.secrets)
+      const response = await makeRequestWithLoadingIndicator(prompt, context.secrets)
       if (response !== undefined) {
         writeToConsole(response, outputChannel)
       }

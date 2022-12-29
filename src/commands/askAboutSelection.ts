@@ -1,7 +1,7 @@
 import * as vscode from 'vscode'
 import { writeToConsole, outputChannel, getUserInput } from '../io'
-import { makeRequest } from '../openai'
-import { getHighlightedText, getFileExtension } from '../document'
+import { makeRequestWithLoadingIndicator } from '../openai'
+import { getHighlightedText } from '../document'
 
 export const askAboutSelectionCommand = (context: vscode.ExtensionContext): vscode.Disposable => {
   return vscode.commands.registerCommand('gpt-copilot.ask_about_selection', async () => {
@@ -9,7 +9,7 @@ export const askAboutSelectionCommand = (context: vscode.ExtensionContext): vsco
     if (highlighted.length > 0) {
       const userQuestion = await getUserInput('Enter your question', 'What does this code do?', 'Invalid question')
       const prompt = `${userQuestion}: ${highlighted}`
-      const response = await makeRequest(prompt, context.secrets)
+      const response = await makeRequestWithLoadingIndicator(prompt, context.secrets)
       if (response !== undefined) {
         writeToConsole(response, outputChannel)
       }

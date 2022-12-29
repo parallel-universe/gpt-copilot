@@ -1,6 +1,6 @@
 import * as vscode from 'vscode'
 import { writeToConsole, outputChannel } from '../io'
-import { makeRequest } from '../openai'
+import { makeRequestWithLoadingIndicator } from '../openai'
 import { getHighlightedText, getFileExtension } from '../document'
 
 export const explainSelectionCommand = (context: vscode.ExtensionContext): vscode.Disposable => {
@@ -8,7 +8,7 @@ export const explainSelectionCommand = (context: vscode.ExtensionContext): vscod
     const highlighted = getHighlightedText()
     if (highlighted.length > 0) {
       const prompt = `Explain the following ${getFileExtension()} code: ${highlighted}`
-      const response = await makeRequest(prompt, context.secrets)
+      const response = await makeRequestWithLoadingIndicator(prompt, context.secrets)
       if (response !== undefined) {
         writeToConsole(response, outputChannel)
       }
