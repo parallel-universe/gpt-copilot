@@ -4,14 +4,18 @@ This extension allows you to use the GPT (Generative Pre-training Transformer) l
 
 ## Features
 
+- Stores your API key securely using the vscode SecretStorage API
 - Use GPT to explain highlighted code or an entire file
-- Ask GPT to suggest changes to a file or block of code
-- Ask GPT to create code from scratch
+- Ask GPT about highlighted code or an entire file
 - Free text input to ask anything you like
+- Ouputs response to the output window in vscode
+- Configurable GPT settings
 
 ## Development
 
 - Docker is used for convienience, you can run the extension in visual studio by hitting f5 in the `extension.ts` file
+- Running the tests in docker is tricky, I haven't nailed it yet, it needs to display the application so for now this has to be done locally
+- Uses ts-standard to keep things tidy, I don't agree with all of it's opinions but it's a quick solution
 
 ## Installation (Not published yet)
 
@@ -23,25 +27,13 @@ This extension allows you to use the GPT (Generative Pre-training Transformer) l
 
 You can customize the behavior of the GPT extension by modifying the following settings in Visual Studio Code's settings pane (Ctrl+Comma):
 
-- `gpt.key`: The API key for accessing the OpenAI API.
-- `gpt.model`: The name of the GPT-3 model to use for generating the response.
-- `gpt.max_tokens`: The maximum number of tokens to use for the response.
-- `gpt.n`: The number of completions to generate for the prompt.
-- `gpt.stop`: (Optional) A sequence of characters that indicates the end of the response.
-- `gpt.temperature`: A value between 0 and 1 that determines the randomness of the response. A higher temperature results in a more varied response, while a lower temperature results in a more deterministic response.
+- `gpt-copilot.model`: The name of the GPT-3 model to use for generating the response.
+- `gpt-copilot.maxTokens`: The maximum number of tokens to use for the response.
+- `gpt-copilot.temperature`: A value between 0 and 1 that determines the randomness of the response. A higher temperature results in a more varied response, while a lower temperature results in a more deterministic response.
 
 ## Usage
 
-User experience to follow
-
-## Makefile
-
-This extension includes a Makefile with the following targets:
-
-- `npm_install`: Runs `npm install` within a Docker container to install the dependencies specified in the project's `package.json` file.
-- `npm_compile`: Runs `npm compile`, which compiles the source code of the project.
-- `up`: Runs `docker-compose up` in detached mode (the `-d` flag), which starts the Docker containers for the project.
-- `logs`: Runs `docker-compose logs`, which displays the logs for all the services defined in the `docker-compose.yml` file. The `-f` flag follows the logs, which means it will display new log messages as they are generated.
+Interaction is provided through the context menu in the editor or via the command-P menu.
 
 ## Credits
 
