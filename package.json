@@ -5,6 +5,10 @@
     "engines": {
         "vscode": "^1.74.0"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/parallel-universe/gpt-copilot"
+    },
     "icon": "images/spellIcon.png",
     "activationEvents": [],
     "main": "./out/extension.js",
