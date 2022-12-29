@@ -1,7 +1,12 @@
 # GPT for Visual Studio Code
 
-This extension allows you to use the GPT (Generative Pre-training Transformer) language model from within Visual Studio Code. It uses Docker to run a Node.js environment and is written in TypeScript.
+This extension allows you to use the GPT (Generative Pre-trained Transformer) language model from within Visual Studio Code. It uses Docker to run a Node.js environment and is written in TypeScript.
 
+## Usage
+
+Interaction is provided through the context menu in the editor or via the command-P menu. 
+
+**Run the setup command to add your API key**
 ## Features
 
 - Stores your API key securely using the vscode SecretStorage API
@@ -11,18 +16,6 @@ This extension allows you to use the GPT (Generative Pre-training Transformer) l
 - Ouputs response to the output window in vscode
 - Configurable GPT settings
 
-## Development
-
-- Docker is used for convienience, you can run the extension in visual studio by hitting f5 in the `extension.ts` file
-- Running the tests in docker is tricky, I haven't nailed it yet, it needs to display the application so for now this has to be done locally
-- Uses ts-standard to keep things tidy, I don't agree with all of it's opinions but it's a quick solution
-
-## Installation (Not published yet)
-
-1. Open Visual Studio Code's extensions pane (Ctrl+Shift+X).
-2. Search for "GPT" and click "Install" on the GPT extension.
-3. Reload Visual Studio Code if prompted.
-
 ## Configuration
 
 You can customize the behavior of the GPT extension by modifying the following settings in Visual Studio Code's settings pane (Ctrl+Comma):
@@ -31,9 +24,11 @@ You can customize the behavior of the GPT extension by modifying the following s
 - `gpt-copilot.maxTokens`: The maximum number of tokens to use for the response.
 - `gpt-copilot.temperature`: A value between 0 and 1 that determines the randomness of the response. A higher temperature results in a more varied response, while a lower temperature results in a more deterministic response.
 
-## Usage
+## Development
 
-Interaction is provided through the context menu in the editor or via the command-P menu.
+- Docker is used for convienience, you can run the extension in visual studio by hitting f5 in the `extension.ts` file
+- Running the tests in docker is tricky, I haven't nailed it yet, it needs to display the application so for now this has to be done locally
+- Uses ts-standard to keep things tidy, I don't agree with all of it's opinions but it's a quick solution
 
 ## Credits
 
