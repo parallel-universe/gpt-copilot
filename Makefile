@@ -15,3 +15,9 @@ up:
 
 logs:
 	docker-compose logs -f
+
+create_package:
+	vsce package
+
+publish_package:
+	vsce publish

@@ -1,12 +1,17 @@
 # GPT for Visual Studio Code
 
-This extension allows you to use the GPT (Generative Pre-trained Transformer) language model from within Visual Studio Code. It uses Docker to run a Node.js environment and is written in TypeScript.
+This extension allows you to use the GPT (Generative Pre-trained Transformer) language model from within Visual Studio Code. Your API key is safely stored using the SecretStorage API. Results are printed in the Output window within vscode.
 
-## Usage
+This extension is designed to help new developers with reading and writing code by requesting explainations of highlighted code or entire files. It also allows you to ask for a GPT text completion with any user provided prompt, useful for asking for code snippets or to elaborate on a concept.
 
-Interaction is provided through the context menu in the editor or via the command-P menu. 
+More updates to follow to make this useful for more seasoned developers looking to leverage OpenAi APIs in their work.
 
-**Run the setup command to add your API key**
+### Setup
+
+1. You will need to get an API key from [OpenAI  API Keys](https://beta.openai.com/account/api-keys)
+2. Using the command pallete menu run the `GPT - Setup` command and input your API key
+3. Start using commands either through the command pallete or right-click context menus
+
 ## Features
 
 - Stores your API key securely using the vscode SecretStorage API
