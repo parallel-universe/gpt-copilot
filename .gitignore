@@ -2,3 +2,4 @@ out
 node_modules
 .vscode-test
 gpt-copilot-0.0.1.vsix
+.vscode

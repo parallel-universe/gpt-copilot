@@ -1,27 +1,19 @@
-import * as vscode from 'vscode'
-import { apiKey } from '../apiKey'
+import { IEditor } from '../Editor'
 
-export const setupCommand = (context: vscode.ExtensionContext): vscode.Disposable => {
-  return vscode.commands.registerCommand('gpt-copilot.setup', () => {
-    void getApiKeyFromUser(context)
-  })
+const validateInput = (value: string | undefined): boolean => {
+  if (value === undefined) {
+    return false
+  }
+  if (value.length === 0) {
+    return false
+  }
+  return true
 }
 
-const getApiKeyFromUser = async (context: vscode.ExtensionContext): Promise<void> => {
-  await vscode.window.showInputBox({
-    prompt: 'Enter your OpenAI API Key',
-    placeHolder: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-    ignoreFocusOut: true,
-    password: true,
-    validateInput: (value: string) => {
-      if (value.length === 0) {
-        return 'Invalid API Key'
-      }
-      return null
-    }
-  }).then((key) => {
-    if (key !== undefined) {
-      void apiKey.set(context.secrets, key)
+export const setupCommand = async (editor: IEditor): Promise<void> => {
+  await editor.getUserInput('Enter your OpenAI API Key', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 'Invalid API Key', true).then((key) => {
+    if (validateInput(key) && key !== undefined) {
+      editor.setSecret('openai-api-key', key)
     }
   })
 }

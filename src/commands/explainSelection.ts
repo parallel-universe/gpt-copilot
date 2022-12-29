@@ -1,19 +1,15 @@
-import * as vscode from 'vscode'
-import { writeToConsole, outputChannel } from '../io'
-import { makeRequestWithLoadingIndicator } from '../openai'
-import { getHighlightedText, getFileExtension } from '../document'
+import { IOpenAIWrapper } from '../OpenAIWrapper'
+import { IEditor } from '../Editor'
 
-export const explainSelectionCommand = (context: vscode.ExtensionContext): vscode.Disposable => {
-  return vscode.commands.registerCommand('gpt-copilot.explain_selection', async () => {
-    const highlighted = getHighlightedText()
-    if (highlighted.length > 0) {
-      const prompt = `Explain the following ${getFileExtension()} code: ${highlighted}`
-      const response = await makeRequestWithLoadingIndicator(prompt, context.secrets)
-      if (response !== undefined) {
-        writeToConsole(response, outputChannel)
-      }
-    } else {
-      void vscode.window.showErrorMessage('No text highlighted')
+export const explainSelectionCommand = async (editor: IEditor, openAiApi: IOpenAIWrapper): Promise<void> => {
+  const highlighted = editor.getHighlightedText()
+  if (highlighted.length > 0) {
+    const prompt = `Explain the following ${editor.getCurrentFileExtension()} code: ${highlighted}`
+    const response = await openAiApi.makeRequestWithLoadingIndicator(prompt, editor)
+    if (response !== undefined) {
+      editor.writeToConsole(response)
     }
-  })
+  } else {
+    void editor.showErrorMessage('No text highlighted')
+  }
 }

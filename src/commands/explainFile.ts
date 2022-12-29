@@ -1,19 +1,15 @@
-import * as vscode from 'vscode'
-import { writeToConsole, outputChannel } from '../io'
-import { makeRequestWithLoadingIndicator } from '../openai'
-import { getCurrentEditorContents, getFileExtension } from '../document'
+import { IOpenAIWrapper } from '../OpenAIWrapper'
+import { IEditor } from '../Editor'
 
-export const explainFileCommand = (context: vscode.ExtensionContext): vscode.Disposable => {
-  return vscode.commands.registerCommand('gpt-copilot.explain_file', async () => {
-    const fileContents = getCurrentEditorContents()
-    if (fileContents.length > 0) {
-      const prompt = `Explain the following ${getFileExtension()} code: ${fileContents}`
-      const response = await makeRequestWithLoadingIndicator(prompt, context.secrets)
-      if (response !== undefined) {
-        writeToConsole(response, outputChannel)
-      }
-    } else {
-      void vscode.window.showErrorMessage('The file is empty')
+export const explainFileCommand = async (editor: IEditor, openAiApi: IOpenAIWrapper): Promise<void> => {
+  const fileContents = editor.getCurrentFileContents()
+  if (fileContents.length > 0) {
+    const prompt = `Explain the following ${editor.getCurrentFileExtension()} code: ${fileContents}`
+    const response = await openAiApi.makeRequestWithLoadingIndicator(prompt, editor)
+    if (response !== undefined) {
+      editor.writeToConsole(response)
     }
-  })
+  } else {
+    void editor.showErrorMessage('The file is empty')
+  }
 }
