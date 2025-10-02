@@ -1,4 +1,6 @@
-# GPT for Visual Studio Code
+# GPT for Visual Studio Code (DEAD)
+
+> Warning! This was a curiosity project only and I have no intention of maintaining or expanding it. So proceed at your own risk.
 
 This extension allows you to use the GPT (Generative Pre-trained Transformer) language model from within Visual Studio Code. Your API key is safely stored using the SecretStorage API. Results are printed in the Output window within vscode.
 
